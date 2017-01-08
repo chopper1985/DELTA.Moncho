@@ -6,7 +6,7 @@
 package DAO;
 
 import org.hibernate.Session;
-import una.model.Pacientes;
+import una.entidades.Pacientes;
 
 /**
  * Hibernate Utility class with a convenient method to get Session Factory

@@ -42,7 +42,6 @@ public class ConsultorioView extends JFrame {
 
     public ConsultorioView() {
         super("Consultorio");
-
         nombreTextField.setName("txtNombre");
         fechaTextField.setName("txtFecha");
         telefonoTextField.setName("txtTelefono");
@@ -56,42 +55,46 @@ public class ConsultorioView extends JFrame {
         aceptarButton.addActionListener(controller);
 
         // Set the view layout
-        JPanel ctrlPane = new JPanel(new GridLayout(6, 6));
+        JPanel ctrlPane = new JPanel();
         ctrlPane.setName("ctrlPanel");
+        ctrlPane.setLayout(null);
+        ctrlPane.setBounds(20, 20, 500, 200);
 
         //Jlabel para indicar que contiene este espacio
-        nombreLabel.setBounds(20, 20, 100, 50);
+        nombreLabel.setBounds(20, 20, 200, 20);
         ctrlPane.add(nombreLabel);
-        nombreTextField.setBounds(80, 20, 100, 50);
+        nombreTextField.setBounds(200, 20, 200, 20);
         ctrlPane.add(nombreTextField);
 
-        fechaLabel.setBounds(20, 90, 100, 50);
+        fechaLabel.setBounds(20, 60, 200, 20);
         ctrlPane.add(fechaLabel);
-        fechaTextField.setBounds(80, 90, 100, 50);
+        fechaTextField.setBounds(200, 60, 200, 20);
         ctrlPane.add(fechaTextField);
 
-        telefonoLabel.setBounds(20, 60, 160, 50);
+        telefonoLabel.setBounds(20, 100, 160, 20);
         ctrlPane.add(telefonoLabel);
-        telefonoTextField.setBounds(80, 160, 50, 50);
+        telefonoTextField.setBounds(200, 100, 200, 20);
         ctrlPane.add(telefonoTextField);
-        
-        aceptarButton.setBounds(100, 230, 50, 50);
+
+        aceptarButton.setBounds(300, 140, 100, 20);
         ctrlPane.add(aceptarButton);
 
-//        JScrollPane tableScrollPane = new JScrollPane(table);
-//        tableScrollPane.setName("scrollTablePaneStudent");
-//        tableScrollPane.setPreferredSize(new Dimension(700, 182));
-//        tableScrollPane.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Informacion",
-//                TitledBorder.CENTER, TitledBorder.TOP));
-//       JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, ctrlPane, tableScrollPane);
-//        splitPane.setName("splitPane");
-//        splitPane.setDividerLocation(35);
-//        splitPane.setEnabled(false);
+        JScrollPane tableScrollPane = new JScrollPane(table);
+        tableScrollPane.setName("scrollTablePaneStudent");
+        tableScrollPane.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Informacion",
+                TitledBorder.CENTER, TitledBorder.TOP));
+
+        tableScrollPane.setBounds(20, 180, 460, 200);
+        ctrlPane.add(tableScrollPane);
+
 //        //Display it all in a scrolling window and make the window appear
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        ctrlPane.setPreferredSize(new Dimension(500, 600));
         add(ctrlPane);
+
         pack();
-        //this.setSize(600, 800);
+
         setLocationRelativeTo(null);
         setVisible(true);
 

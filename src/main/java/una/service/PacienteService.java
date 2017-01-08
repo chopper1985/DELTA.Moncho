@@ -5,7 +5,7 @@
  */
 package una.service;
 
-import una.model.Pacientes;
+import una.entidades.Pacientes;
 
 /**
  *
