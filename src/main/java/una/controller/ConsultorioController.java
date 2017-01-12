@@ -5,12 +5,15 @@
  */
 package una.controller;
 
+import com.mycompany.agendadoctor.Constants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import una.service.ConsultorioService;
+import una.service.ConsultorioServiceImple;
 
 /**
  *
@@ -22,19 +25,27 @@ public class ConsultorioController implements ActionListener, KeyListener {
     private JTextField fechaTextField;
     private JTextField telefonoTextField;
     private DefaultTableModel tableModel;
+    private Object[][] consultorios;
+    private ConsultorioService consultorioService;
 
     public ConsultorioController() {
-        
-        
+
     }
 
-    public ConsultorioController(JTextField nombreTextField, JTextField fechaTextField, JTextField telefonoTextField, DefaultTableModel tableModel) {
+    public ConsultorioController(JTextField nombreTextField,  DefaultTableModel tableModel) {
         super();
+
         this.nombreTextField = nombreTextField;
         this.fechaTextField = fechaTextField;
         this.telefonoTextField = telefonoTextField;
         this.tableModel = tableModel;
         
+        
+        consultorioService = new ConsultorioServiceImple();
+        consultorios = consultorioService.loadStudentsObjWrapper();
+        //         Load the table with the list of students
+        tableModel.setDataVector(consultorios, Constants.TABLE_HEADER);
+
     }
 
     @Override
@@ -44,17 +55,19 @@ public class ConsultorioController implements ActionListener, KeyListener {
 
     @Override
     public void keyTyped(KeyEvent ke) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
 
 }

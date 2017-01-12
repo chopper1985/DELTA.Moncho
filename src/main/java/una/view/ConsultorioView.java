@@ -5,18 +5,15 @@
  */
 package una.view;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
@@ -29,36 +26,49 @@ import una.controller.ConsultorioController;
  */
 public class ConsultorioView extends JFrame {
 
+    AgregarConsultorioView agregarView = new AgregarConsultorioView();
     JTextField nombreTextField = new JTextField(26);
-    JTextField fechaTextField = new JTextField(26);
-    JTextField telefonoTextField = new JTextField(26);
-    JButton aceptarButton = new JButton("Aceptar");
-    JLabel nombreLabel = new JLabel("Nombre del Consultorio");
-    JLabel fechaLabel = new JLabel("Horario de Atencion");
-    JLabel telefonoLabel = new JLabel("Telefono del Consultorio");
+//    JTextField fechaTextField = new JTextField(26);
+//    JTextField telefonoTextField = new JTextField(26);
 
-    JTable table = new JTable();
+    JButton buscarButton = new JButton("Buscarr");
+    JButton agregarButton = new JButton("Agregar");
+    JButton eliminarButton = new JButton("Eliminar");
+
+    JLabel nombreLabel = new JLabel("Nombre del Consultorio");
+//    JLabel fechaLabel = new JLabel("Horario de Atencion");
+//    JLabel telefonoLabel = new JLabel("Telefono del Consultorio");
+
+    JTable table = new JTable(){
+        private static final long serialVersionUID = 1L;
+        @Override
+        public boolean isCellEditable(int row, int colw){
+            return false;
+        }
+    };
     DefaultTableModel tableModel = new DefaultTableModel();
 
     public ConsultorioView() {
         super("Consultorio");
         nombreTextField.setName("txtNombre");
-        fechaTextField.setName("txtFecha");
-        telefonoTextField.setName("txtTelefono");
-        aceptarButton.setName("btnAceptar");
+//        fechaTextField.setName("txtFecha");
+//        telefonoTextField.setName("txtTelefono");
+        buscarButton.setName("btnBuscar");
+        agregarButton.setName("btnAgregar");
+        eliminarButton.setName("btnEliminar");
 
         // Create table model
         table.setName("mainTable");
         table.setModel(tableModel);
 
-        ConsultorioController controller = new ConsultorioController(nombreTextField, fechaTextField, telefonoTextField, tableModel);
-        aceptarButton.addActionListener(controller);
+        ConsultorioController controller = new ConsultorioController(nombreTextField, tableModel);
+        agregarButton.addActionListener(controller);
 
         // Set the view layout
         JPanel ctrlPane = new JPanel();
         ctrlPane.setName("ctrlPanel");
-        ctrlPane.setLayout(null);
-        ctrlPane.setBounds(20, 20, 500, 200);
+        //ctrlPane.setLayout(null);
+        ctrlPane.setBounds(20, 20, 600, 300);
 
         //Jlabel para indicar que contiene este espacio
         nombreLabel.setBounds(20, 20, 200, 20);
@@ -66,18 +76,12 @@ public class ConsultorioView extends JFrame {
         nombreTextField.setBounds(200, 20, 200, 20);
         ctrlPane.add(nombreTextField);
 
-        fechaLabel.setBounds(20, 60, 200, 20);
-        ctrlPane.add(fechaLabel);
-        fechaTextField.setBounds(200, 60, 200, 20);
-        ctrlPane.add(fechaTextField);
-
-        telefonoLabel.setBounds(20, 100, 160, 20);
-        ctrlPane.add(telefonoLabel);
-        telefonoTextField.setBounds(200, 100, 200, 20);
-        ctrlPane.add(telefonoTextField);
-
-        aceptarButton.setBounds(300, 140, 100, 20);
-        ctrlPane.add(aceptarButton);
+        buscarButton.setBounds(300, 140, 100, 20);
+        ctrlPane.add(buscarButton);
+        agregarButton.setBounds(300, 140, 100, 20);
+        ctrlPane.add(agregarButton);
+        eliminarButton.setBounds(300, 140, 100, 20);
+        ctrlPane.add(eliminarButton);
 
         JScrollPane tableScrollPane = new JScrollPane(table);
         tableScrollPane.setName("scrollTablePaneStudent");
@@ -87,17 +91,23 @@ public class ConsultorioView extends JFrame {
         tableScrollPane.setBounds(20, 180, 460, 200);
         ctrlPane.add(tableScrollPane);
 
-//        //Display it all in a scrolling window and make the window appear
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  
 
-        ctrlPane.setPreferredSize(new Dimension(500, 600));
+        ctrlPane.setPreferredSize(new Dimension(800, 500));
         add(ctrlPane);
 
         pack();
 
         setLocationRelativeTo(null);
-        setVisible(true);
-
+      
+        
+        
+        agregarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                agregarView.setVisible(true);
+            }
+        });
     }
 
 }

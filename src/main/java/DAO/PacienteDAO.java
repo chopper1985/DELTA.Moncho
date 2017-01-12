@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import una.entidades.Pacientes;
+import una.model.Pacientes;
 
 /**
  *

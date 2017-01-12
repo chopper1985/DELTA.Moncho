@@ -5,19 +5,25 @@
  */
 package una.service;
 
-import una.model.Pacientes;
+import una.model.Consultorio;
 
 /**
  *
  * @author Josue
  */
-public interface PacienteService {
+public interface ConsultorioService {
 
-    public Pacientes borrarPorId(int id);
 
-    public Pacientes modificarPorId(int id);
+    public Consultorio Guardar(Consultorio consultorio);
 
-    public Pacientes ConsultarPorId(int id);
+    public Consultorio borrarPorId(int id);
 
+    public Consultorio modificarPorId(int id);
+
+    public Consultorio ConsultarPorId(int id);
+    
     public Object[][] loadStudentsObjWrapper();
+    
+
+
 }

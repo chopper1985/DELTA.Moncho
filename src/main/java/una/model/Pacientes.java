@@ -78,14 +78,14 @@ public class Pacientes implements Serializable {
 
     }
 
-    public Pacientes(Integer id, String nombre, Integer telefono, String direccion, String enfermedades, String observaciones, List<Pacientes> pacientes) {
+    public Pacientes(Integer id, String nombre, Integer telefono, String direccion, String enfermedades, String observacion) {
         this.id = id;
-        this.nombre = "";
-        this.telefono = 0;
-        this.direccion = "";
-        this.enfermedades = "";
-        this.observacion = "";
-        this.pacientes = pacientes ;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.enfermedades = enfermedades;
+        this.observacion = observacion;
+        
     }
 
     public String getNombre() {

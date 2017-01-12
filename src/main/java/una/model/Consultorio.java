@@ -55,6 +55,14 @@ public class Consultorio implements Serializable {
     private Collection<Citas> citasCollection;
 
     public Consultorio() {
+        
+    }
+
+    public Consultorio(Integer id, String nombre, Date fechaHora, Integer tefefono) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaHora = fechaHora;
+        this.tefefono = tefefono;
     }
 
     public Consultorio(Integer id) {

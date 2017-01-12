@@ -5,47 +5,48 @@
  */
 package DAO;
 
+import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import una.entidades.Pacientes;
+import una.model.Consultorio;
+import una.model.Pacientes;
 
 /**
- * Hibernate Utility class with a convenient method to get Session Factory
- * object.
  *
  * @author Josue
  */
-public class PacienteDAOHibernateUtil implements PacienteDAO{
+public class ConsultorioDAOImpleme implements ConsultorioDAO {
 
-     private final Session session = HibernateUtil.getSessionFactory().openSession();
-    
-
-    
-//    public static SessionFactory getSessionFactory() {
-//        return sessionFactory;
-//    }
-
+    private final Session session = HibernateUtil.getSessionFactory().openSession();
+  
     @Override
-    public Pacientes buscarPorId(int id) {
+    public Consultorio Guardar(Pacientes paciente) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Pacientes Guardar(Pacientes paciente) {
+    public Consultorio borrarPorId(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Pacientes borrarPorId(int id) {
+    public Consultorio modificarPorId(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Pacientes modificarPorId(int id) {
+    public Consultorio ConsultarPorId(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Pacientes ConsultarPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Consultorio> getListaConsultorio(String text) {
+        
+        Query query = session.createQuery("from Consultorio");
+        List results = query.list();
+
+        return results;
     }
+
 }
